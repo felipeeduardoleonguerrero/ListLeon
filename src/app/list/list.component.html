@@ -1,0 +1,15 @@
+<div class="list-container">
+        <div *ngFor="let student of students" [ngClass]="student.graduated ? 'pass' : 'no-pass'" class="students">
+            <h3>{{student.name}}</h3><br />
+            <span>Estado: 
+                <span *ngIf="student.graduated; else notGraduated" style="color:lightseagreen;font-weight:bold;">Graduado</span>
+                <ng-template #notGraduated><span style="color:orange;font-weight:bold;">No graduado</span></ng-template>
+            </span><br />
+            <span>Con honores: 
+                <span *ngIf="student.honors; else noHonors" style="font-weight:bold;">Si</span>
+                <ng-template #noHonors><span style="font-weight:normal;">No</span></ng-template>
+            </span><br />
+            <hr />
+            <span>Fecha de examen: {{student.examDate | date:'short'}}</span>
+        </div>
+</div>
